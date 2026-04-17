@@ -14,5 +14,9 @@ app.get('/contact', (req, res) => {
     res.send("This is the contact page")
 })
 
+app.get('/dhurandhar', (req, res) => {
+    res.send("Ghar ki yaad nhi aayi tuje jassi!!!")
+})
+
 app.listen(3000)
 // server start ho chuka hai
