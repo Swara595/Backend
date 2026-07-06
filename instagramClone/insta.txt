@@ -1,0 +1,37 @@
+1. Authentication : 
+     register 
+     login
+     logout (token blacklisting)
+     [otp based registration]
+
+2. Posts : 
+     create = {
+          caption:String,
+          img_url:String,
+          user:userId,
+          createdAt:Date-time
+     }
+     can see the feed 
+     like posts (collection types)
+     save posts 
+
+3. Users : 
+     followers
+     following 
+
+user = {
+     username:String,
+     email:String,
+     password:String,
+     bio:String,
+     followers:Array,
+     profile_img:String
+}
+
+why we dont send password in response?
+ : Security — password should never leave the server, even if it's hashed. If someone intercepts the response, they get the hash and can run offline brute-force attacks on it
+ : Principle of least privilege — only send what the client actually needs. The frontend has zero use for the password after registration
+ : Accidental logging — API responses often get logged (in Postman, browser devtools, server logs, monitoring tools like Datadog). Sending password means it gets logged everywhere
+ : Token is enough — the client already gets a JWT token which is used for all future authentication. Password is never needed again on the client side
+
+package "bcryptjs" - used to convert password to hash and check during login, whether the entered password and password stored in dB match each other or no.

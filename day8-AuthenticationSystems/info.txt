@@ -1,0 +1,28 @@
+Any authentication system has 4 pillars : 
+  authentication = identifying which user sent the request
+  authorization = what the user can do
+  validation = checking the format of data
+  verification = checking if the entered data is correct or no
+
+How is Authentication implemented?
+-whenever any lands on our server, that user needs to register
+ on our app.
+-while registering, the user gives its details and those details 
+ get stored in req.body
+-with the help of data in req.body , the server performs the foll:
+ saves the data of user to the dB
+ creates token(idCard) with the help of user data
+ after creating the token, server sends that token to the user
+-ek baar user ne register kr liya or uske pass token aa gaya, to
+ uske baad jo bhi req user krega,us req ke andar vo token hona 
+ chahiye
+-when any user(A) sends any req to the server, the token(TokenA)
+ is also sent along with the req, server reads the data of token 
+ A(contains data of user A) and assumes that the req was sent by 
+ user A  
+
+to create token , a package called "npm i jsonwebtoken" is required
+
+database breach = jo data dB me store hota hai uska leak hona
+if database breach occurs, anyone can log into anyone's account
+hence we hash passwords. hashing is one way while encryption is 2 way 
